@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,  } from 'react-native';
+import { StyleSheet, Text, View, Button,Platform  } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
 
 
 const CategoriMealScreen = (props) =>{
+    
     const categoryId = props.navigation.getParam('categoryId');
     // console.log("categoryId==============",categoryId)
 
     const selectedCategory = CATEGORIES.find(category =>category.id === categoryId);
     // console.log("selected Category", selectedCategory);
+
     return (
         <View style={styles.screen}>
             <Text>Hey This is CategoriMeal Screen </Text>
@@ -18,12 +20,18 @@ const CategoriMealScreen = (props) =>{
         </View>
     )
 }
+
 CategoriMealScreen.navigationOptions = (navigationData) => {
     // console.log(navigationData);
     const categoryId = navigationData.navigation.getParam('categoryId');
+    // console.log(categoryId)
     const selectedCategory = CATEGORIES.find(category =>category.id === categoryId);
     return {
         headerTitle: selectedCategory.title,
+        // headerStyle:{
+        //     backgroundColor:Platform.OS === 'android' ? selectedCategory.color : 'black'
+           
+        // },
     };
    
 }

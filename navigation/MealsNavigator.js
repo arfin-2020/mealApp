@@ -13,22 +13,20 @@ import Color from '../constant/Color';
 const MealsNavigator =  createStackNavigator ({
         Catagories: {
             screen: CategoriesScreen,
-            navigationOptions:{
-                headerTitle:'Meal Categories'
-            }
         },
         CategoryMeals:{
             screen: CategoriMealScreen,
         },
         MealDetail: MealDetailsScreen
 },
-{
+{ 
+    // mode:'modal',
     defaultNavigationOptions:{
         headerStyle:{
             backgroundColor:Platform.OS === 'android' ? Color.primaryColor : 'black'
         },
-        headerTintColor:Platform.OS === 'android' ? 'white' : Color.primaryColor ,
-        headerTitle:'A screen'
+        headerTintColor:Platform.OS === 'android' ? 'white' : Color.primaryColor,
+        // headerTitle:'A screen'
     }
 });
 
