@@ -1,11 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { MEALS } from '../data/dummy-data'
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../compnents/HeaderButton';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { CustomHeaderBtn, StarComponent } from '../compnents/CustomHeaderBtn';
+import { StarComponent } from '../compnents/CustomHeaderBtn';
+import { MEALS } from '../data/dummy-data';
 
 
 const MealDetailsScreen = (props) => {
@@ -27,10 +24,11 @@ MealDetailsScreen.navigationOptions = (navigateData) => {
     return {
         headerTitle: selectedMeal.title,
         headerRight: () =>
-            <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity onPress={() => { console.log('mark as you favorite food!!!') }}>
+            <View >
+                <TouchableOpacity  style={{ flexDirection: 'row' }}
+                onPress={() => { console.log('mark as you favorite food!!!') }}>
                     <StarComponent />
-                    <CustomHeaderBtn />
+                   
                 </TouchableOpacity>
                 {/* <TouchableOpacity>
                     <CustomHeaderBtn />

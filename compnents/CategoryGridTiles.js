@@ -1,11 +1,6 @@
 import React from 'react';
 import {
-    TouchableOpacity,
-    Text,
-    View,
-    StyleSheet,
-    Platform,
-    TouchableNativeFeedback
+    Platform, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View
 } from 'react-native';
 
 
@@ -35,7 +30,8 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 5,
         borderTopLeftRadius: 5,
         borderTopRightRadius: 40,
-        overflow:'hidden'
+        overflow:'hidden',
+        elevation: 5,
     },
     textStyle: {
         color: 'black',
@@ -45,16 +41,16 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 5,
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 40,
+        // borderBottomLeftRadius: 40,
+        // borderBottomRightRadius: 5,
+        // borderTopLeftRadius: 5,
+        // borderTopRightRadius: 40,
         // overflow: 'hidden',
         shadowColor: 'black',
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
-        elevation: 5,
+        
 
         padding: 10,
         justifyContent: 'flex-end',
