@@ -17,7 +17,7 @@ const CategoriMealScreen = (props) => {
         complexity={itemData.item.complexity.toUpperCase()}
         affordability={itemData.item.affordability.toUpperCase()}
         image={itemData.item.imageUrl}
-        onSelectMeal={()=>{}}/>
+        onSelectMeal={()=>{props.navigation.navigate('MealDetail',{mealId:itemData.item.id})}}/>
         
     }
     const categoryId = props.navigation.getParam('categoryId');
