@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#f5f5f5',
         borderRadius:10,
         overflow:'hidden',
+        marginVertical: 10,
     },
     textStyle:{
         color:'black',
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
     bgtextStyle:{
         fontSize:22,
         color:'white',
-        
         textAlign:'center',
     },
     mealRow:{
