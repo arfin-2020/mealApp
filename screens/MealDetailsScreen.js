@@ -34,7 +34,7 @@ MealDetailsScreen.navigationOptions = (navigateData) => {
                     <CustomHeaderBtn />
                 </TouchableOpacity> */}
             </View>
-
+            
 
     }
 }
