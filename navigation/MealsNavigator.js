@@ -110,7 +110,10 @@ const mealFavTabNavigator =
         const MainNavigator = createDrawerNavigator({
             screen: mealFavTabNavigator,
             Filter:filterStackNavigator
-        })
+        },{
+            defaultNavigationOptions:defaultNavOptions
+        }
+        )
 
 export default createAppContainer(MainNavigator);
 

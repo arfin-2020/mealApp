@@ -23,10 +23,10 @@ FilterScreen.navigationOptions = (navData) => {
             </TouchableOpacity>
         ),
     
-        headerStyle:{
-            backgroundColor: Platform.OS === 'android' ? Color.primaryColor  : 'white'
-        },
-        headerTintColor:Platform.OS === 'android' ? 'white' : Color.accentColor,
+        // headerStyle:{
+        //     backgroundColor: Platform.OS === 'android' ? Color.primaryColor  : 'white'
+        // },
+        // headerTintColor:Platform.OS === 'android' ? 'white' : Color.accentColor,
     }
 }
 
