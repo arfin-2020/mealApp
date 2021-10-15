@@ -1,12 +1,14 @@
 
-import {Platform} from 'react-native';
+
+import { Platform } from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Color from '../constant/Color';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoriMealScreen from '../screens/CategoriMealScreen';
+import FavoriteScreen from '../screens/FavoriteScreen';
 import MealDetailsScreen from '../screens/MealDetailsScreen';
-import Color from '../constant/Color';
-
 
 
 
@@ -30,7 +32,13 @@ const MealsNavigator =  createStackNavigator ({
     }
 });
 
-export default createAppContainer(MealsNavigator);
+
+const mealFavTabNavigator = createBottomTabNavigator({
+    Meals:MealsNavigator,
+    favorites: FavoriteScreen
+});
+
+export default createAppContainer(mealFavTabNavigator);
 
 
 
