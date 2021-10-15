@@ -9,9 +9,12 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoriMealScreen from '../screens/CategoriMealScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import MealDetailsScreen from '../screens/MealDetailsScreen';
+import FilterScreen from '../screens/FilterScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
 
 
 const defaultNavOptions = {
@@ -78,7 +81,7 @@ const tabScreenConfig =  {
             },
             tabBarColor: Color.secondaryColor
         }
-    }
+    },
 }
 
 const mealFavTabNavigator =
@@ -98,7 +101,18 @@ const mealFavTabNavigator =
             }
         });
 
-export default createAppContainer(mealFavTabNavigator);
+
+        const filterStackNavigator = createStackNavigator({
+            Filter:FilterScreen,
+         
+        },)
+
+        const MainNavigator = createDrawerNavigator({
+            screen: mealFavTabNavigator,
+            Filter:filterStackNavigator
+        })
+
+export default createAppContainer(MainNavigator);
 
 
 

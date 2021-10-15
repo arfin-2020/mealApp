@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, FlatList  } from 'react-native';
+import { StyleSheet, FlatList, Touchable  } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
 
 import CatgegoryGridTiles from '../compnents/CategoryGridTiles';
+import { MenuComponent } from '../compnents/CustomHeaderBtn';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
@@ -28,8 +30,17 @@ const CategoriesScreen = (props) => {
         />
     )
 }
-CategoriesScreen.navigationOptions = {
-    headerTitle: 'Meal Categories',
+CategoriesScreen.navigationOptions = navData => {
+    return{
+        headerTitle: 'Meal Categories',
+        headerLeft: ()=>(
+            <TouchableOpacity onPress={()=>{navData.navigation.toggleDrawer();}}>
+            <MenuComponent/>
+            </TouchableOpacity>
+        )
+       
+    }
+    
 }
 
 const styles = StyleSheet.create({

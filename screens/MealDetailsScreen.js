@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button, StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+
 import { StarComponent } from '../compnents/CustomHeaderBtn';
 import { MEALS } from '../data/dummy-data';
 
@@ -23,18 +23,14 @@ MealDetailsScreen.navigationOptions = (navigateData) => {
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
     return {
         headerTitle: selectedMeal.title,
-        headerRight: () =>
+        headerRight: () =>(
             <View >
-                <TouchableOpacity  style={{ flexDirection: 'row' }}
+                <TouchableOpacity  
                 onPress={() => { console.log('mark as you favorite food!!!') }}>
                     <StarComponent />
-                   
                 </TouchableOpacity>
-                {/* <TouchableOpacity>
-                    <CustomHeaderBtn />
-                </TouchableOpacity> */}
             </View>
-            
+            )
 
     }
 }
