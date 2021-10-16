@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { createAppContainer } from "react-navigation";
@@ -23,6 +23,12 @@ const defaultNavOptions = {
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Color.primaryColor,
     // headerTitle:'A screen'
+    headerTitleStyle:{
+        fontFamily:'OpenSans-Regular'
+    },
+    headerBackTitleStyle:{
+        fontFamily:'OpenSans-Bold'
+    }
 }
 
 
@@ -62,7 +68,9 @@ const tabScreenConfig = {
                     />
                 )
             },
-            tabBarColor: Color.primaryColor
+            
+            tabBarColor: Color.primaryColor,
+            tabBarLabel: Platform.OS === 'android' ? <Text>Meals</Text> : 'Meals',
         }
     },
 
@@ -79,7 +87,8 @@ const tabScreenConfig = {
                     />
                 )
             },
-            tabBarColor: Color.secondaryColor
+            tabBarColor: Color.secondaryColor,
+            tabBarLabel: Platform.OS === 'android' ? <Text>Favorites</Text> : 'Favorites',
         }
     },
 }
@@ -97,6 +106,9 @@ const mealFavTabNavigator =
         : createBottomTabNavigator(
             tabScreenConfig, {
             tabBarOptions: {
+                labelStyle:{
+                    fontFamily:'OpenSans-Bold'
+                },
                 activeTintColor: Color.accentColor,
             }
         });
