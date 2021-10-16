@@ -34,7 +34,7 @@ CategoriesScreen.navigationOptions = navData => {
     return{
         headerTitle: 'Meal Categories',
         headerLeft: ()=>(
-            <TouchableOpacity onPress={()=>{navData.navigation.toggleDrawer();}}>
+            <TouchableOpacity onPress={()=>{navData.navigation.toggleDrawer()}}>
             <MenuComponent/>
             </TouchableOpacity>
         )
