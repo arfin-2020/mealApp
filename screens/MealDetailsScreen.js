@@ -1,7 +1,6 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import {
     ScrollView,
-    Button,
     StyleSheet,
     Text,
     View,
@@ -10,8 +9,8 @@ import {
 } from 'react-native';
 import DefaultText from '../compnents/DefaultText'
 import { StarComponent } from '../compnents/CustomHeaderBtn';
-import { MEALS } from '../data/dummy-data';
-
+// import { MEALS } from '../data/dummy-data';
+import { useSelector } from 'react-redux';
 const ListItem = (props) =>{
     return (
         <View style={styles.listItem}>
@@ -20,9 +19,16 @@ const ListItem = (props) =>{
     )
 }
 const MealDetailsScreen = (props) => {
+    const availableMeals = useSelector(state => state.meals.meals)
     const mealId = props.navigation.getParam('mealId');
-    const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+    const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
     //  console.log('id--------',selectedMeal)
+
+    // কোন কিছু আমরা চাইলে পাটাটে পারি নিচের সেকশনে এইটার মাধ্যমে
+    // useEffect(()=>{
+    //     props.navigation.setParams({mealTitle:selectedMeal.title});
+    // },[selectedMeal])
+
     return (
         <ScrollView>
             <View style={styles.screen}>
@@ -50,10 +56,12 @@ const MealDetailsScreen = (props) => {
 
 
 MealDetailsScreen.navigationOptions = (navigateData) => {
-    const mealId = navigateData.navigation.getParam('mealId');
-    const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+    // const mealId = navigateData.navigation.getParam('mealId');
+    // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+    const mealTitle = navigateData.navigation.getParam('mealTitle');
+    console.log('mealtitle --------',mealTitle)
     return {
-        headerTitle: selectedMeal.title,
+        headerTitle: mealTitle,
         headerRight: () => (
             <View >
                 <TouchableOpacity

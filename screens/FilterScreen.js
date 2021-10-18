@@ -44,6 +44,7 @@ const FilterScreen = (props) => {
     useEffect(()=>{
         navigation.setParams({save:saveFilters});
     },[saveFilters])
+    
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Available Filter / Restraction </Text>

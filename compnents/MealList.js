@@ -9,7 +9,12 @@ const MealList = (props) =>{
         complexity={itemData.item.complexity.toUpperCase()}
         affordability={itemData.item.affordability.toUpperCase()}
         image={itemData.item.imageUrl}
-        onSelectMeal={()=>{props.navigation.navigate('MealDetail',{mealId:itemData.item.id})}}/>
+        onSelectMeal={()=>{
+            props.navigation.navigate('MealDetail',
+            {
+                mealId:itemData.item.id,
+                mealTitle:itemData.item.title
+            })}}/>
         
     }
     return(
