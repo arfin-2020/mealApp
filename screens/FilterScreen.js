@@ -35,8 +35,8 @@ const FilterScreen = (props) => {
         const appliedFilters = {
             glutenFree: isGluten,
             lactoseFree: isLactose,
-            VeganFree: isVegan,
-            vegeTarianFree: isVegetarian,
+            vegan: isVegan,
+            vegetarian: isVegetarian,
         };
         console.log(appliedFilters);
     },[isGluten, isLactose, isVegan, isVegetarian]);
