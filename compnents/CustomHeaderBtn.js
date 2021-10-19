@@ -8,15 +8,15 @@ export const CustomHeaderBtn = () =>{
         )
 }
 
-export const StarComponent = () =>{
-    // console.log(props)
-    return (
-        <Icon 
-        name="star-sharp" 
-        size={30}  
-        color={Platform.OS === 'android' ? 'white' : Color.primaryColor} />
-    )
-}
+// export const StarComponent = (props) =>{
+//     // console.log(props)
+//     return (
+//         <Icon 
+//         name="star-sharp" 
+//         size={30}  
+//         color={Platform.OS === 'android' ? 'white' : Color.primaryColor} />
+//     )
+// }
 export const MenuComponent = () =>{
     return (
         <Icon style={{marginLeft:15}} 

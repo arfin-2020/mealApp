@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react';
+import React ,{useEffect,useCallback} from 'react';
 import {
     ScrollView,
     StyleSheet,
@@ -8,9 +8,13 @@ import {
     Image,
 } from 'react-native';
 import DefaultText from '../compnents/DefaultText'
-import { StarComponent } from '../compnents/CustomHeaderBtn';
 // import { MEALS } from '../data/dummy-data';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleFavorite } from '../store/actions/meals';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Color from '../constant/Color'
+
+
 const ListItem = (props) =>{
     return (
         <View style={styles.listItem}>
@@ -19,15 +23,29 @@ const ListItem = (props) =>{
     )
 }
 const MealDetailsScreen = (props) => {
-    const availableMeals = useSelector(state => state.meals.meals)
+    const availableMeals = useSelector(state => state.meals.meals);
     const mealId = props.navigation.getParam('mealId');
     const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
     //  console.log('id--------',selectedMeal)
+    const currentMealIsFavorite = useSelector(state =>
+        state.meals.favoriteMeals.some(meal => meal.id === mealId));
+    const dispatch = useDispatch();
+
+    const toggleFavoriteHandler = useCallback(() =>{
+        dispatch(toggleFavorite(mealId))
+    },[dispatch, mealId]);
 
     // কোন কিছু আমরা চাইলে পাটাটে পারি নিচের সেকশনে এইটার মাধ্যমে
-    // useEffect(()=>{
-    //     props.navigation.setParams({mealTitle:selectedMeal.title});
-    // },[selectedMeal])
+    useEffect(()=>{
+        // props.navigation.setParams({mealTitle:selectedMeal.title});
+        props.navigation.setParams({toggleFav: toggleFavoriteHandler});
+    },[toggleFavoriteHandler])
+
+
+    useEffect(()=>{
+        props.navigation.setParams({currentMealIsFavorite:currentMealIsFavorite})
+    },[currentMealIsFavorite])
+
 
     return (
         <ScrollView>
@@ -59,16 +77,20 @@ MealDetailsScreen.navigationOptions = (navigateData) => {
     // const mealId = navigateData.navigation.getParam('mealId');
     // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
     const mealTitle = navigateData.navigation.getParam('mealTitle');
-    console.log('mealtitle --------',mealTitle)
+    // console.log('mealtitle --------',mealTitle)
+    const toggleFavorite = navigateData.navigation.getParam('toggleFav');
+    const currentMealIsFavorite =  navigateData.navigation.getParam('currentMealIsFavorite');
+    console.log('id-------',currentMealIsFavorite)
     return {
         headerTitle: mealTitle,
         headerRight: () => (
-            <View >
                 <TouchableOpacity
-                    onPress={() => { console.log('mark as you favorite food!!!') }}>
-                    <StarComponent />
+                    onPress={toggleFavorite}>
+                <Icon 
+                name={currentMealIsFavorite ? 'star-sharp' : 'star-outline'}
+                size={30}  
+                color={Platform.OS === 'android' ? 'white' : Color.primaryColor} />
                 </TouchableOpacity>
-            </View>
         )
 
     }
