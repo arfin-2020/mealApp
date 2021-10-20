@@ -80,7 +80,7 @@ MealDetailsScreen.navigationOptions = (navigateData) => {
     // console.log('mealtitle --------',mealTitle)
     const toggleFavorite = navigateData.navigation.getParam('toggleFav');
     const currentMealIsFavorite =  navigateData.navigation.getParam('currentMealIsFavorite');
-    console.log('id-------',currentMealIsFavorite)
+    // console.log('id-------',currentMealIsFavorite)
     return {
         headerTitle: mealTitle,
         headerRight: () => (

@@ -2,10 +2,9 @@ import React from 'react';
 import MealList from '../compnents/MealList';
 import { CATEGORIES } from '../data/dummy-data';
 import { useSelector } from 'react-redux';
+import {StyleSheet, Text, View} from 'react-native';
+const CategoriMealScreen = (props) => { 
 
-const CategoriMealScreen = (props) => {
-
-    
     // console.log("categoryId==============",categoryId)
     // const selectedCategory = CATEGORIES.find(category =>category.id === categoryId);
     // console.log("selected Category", selectedCategory);
@@ -18,6 +17,12 @@ const CategoriMealScreen = (props) => {
     const displayedMeals = availableMeals.filter(
         (meal) => meal.categoryIds.indexOf(categoryId) >= 0
     );
+
+    if(displayedMeals.length === 0){
+        return <View style={styles.categoryContainer}>
+            <Text style={styles.text}>No Meal found Maybe check you filter</Text>
+        </View>
+    }
 
     return <MealList listData={displayedMeals} navigation={props.navigation}/>
 }
@@ -37,7 +42,19 @@ CategoriMealScreen.navigationOptions = (navigationData) => {
 
 }
 
-
+const styles = StyleSheet.create({
+    categoryContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '80%',
+        marginVertical: 15,
+    },
+    text:{
+        color:'black',
+        fontFamily:'OpenSans-Regular'
+    }
+})
 
 
 export default CategoriMealScreen;
